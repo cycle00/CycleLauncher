@@ -19,6 +19,7 @@
     "ejs-electron": "^2.1.1",
     "electron-updater": "^4.3.5",
     "jquery": "^3.5.1",
-    "semver": "^7.3.4"
+    "semver": "^7.3.4",
+    "fs-extra": "^9.1.0"
   }
 }

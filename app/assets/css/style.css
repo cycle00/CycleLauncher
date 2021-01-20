@@ -148,4 +148,50 @@ body, button {
     background: rgba(235, 0, 0, 0.61) !important;
 }
 
-/* TODO: DARWIN BUTTONS */
+/* Darwin button styles */
+.frameButtonDarwin {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    border: 0px;
+    margin-left: 5px;
+    -webkit-app-region: no-drag !important;
+    cursor: pointer;
+}
+.frameButtonDarwin:focus {
+    outline: 0px;
+}
+
+#frameButtonDarwin_close {
+    background-color: #e74c32;
+}
+#frameButtonDarwin_close:hover,
+#frameButtonDarwin_close:focus {
+    background-color: #ff9a8a;
+}
+#frameButtonDarwin_close:active {
+    background-color: #ff8d7b;
+}
+
+#frameButtonDarwin_minimize {
+    background-color: #fed045;
+}
+#frameButtonDarwin_minimize:hover,
+#frameButtonDarwin_minimize:focus {
+    background-color: #ffe9a9;
+}
+#frameButtonDarwin_minimize:active {
+    background-color: #ffde7b;
+}
+
+#frameButtonDarwin_restoredown {
+    background-color: #96e734;
+}
+#frameButtonDarwin_restoredown:hover,
+#frameButtonDarwin_restoredown:focus {
+    background-color: #d6ffa6;
+}
+
+#frameButtonDarwin_restoredown:active {
+    background-color: #bfff76;
+}
