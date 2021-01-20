@@ -5,7 +5,7 @@
  ***********************************************************/
 
 @font-face {
-    font-family: 'Equinox Regular';
+    font-family: 'Equinox-Bold';
     src: url('../font/Equinox-Bold.ttf');
 }
 
@@ -16,7 +16,136 @@
 
 /************************************************************
  *                                                          *
- * Loading element (app.ejs)                                *
+ * Elements                                                 *
  *                                                          *
  ***********************************************************/
 
+/* Reset these */
+body, html, div {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Reset this */
+p {
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+}
+
+/* Set default font and colour */
+body, button {
+    font-family: 'Equinox-Regular';
+    color: white;
+}
+
+/************************************************************
+ *                                                          *
+ * Frame (frame.ejs)                                        *
+ *                                                          *
+ ***********************************************************/
+
+/* Frame bar */
+#frameBar {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 1s ease;
+    -webkit-user-select: none;
+}
+
+/* Undraggable region on the top of the frame. */
+#frameResizableTop {
+    height: 2px;
+    width: 100%;
+    -webkit-app-region: no-drag;
+}
+
+/* Flexbox to wrap the main frame content. */
+#frameMain {
+    display: flex;
+    height: 20px;
+}
+
+/* Undraggable region on the left and right of the frame. */
+.frameResizableVert {
+    width: 2px;
+    -webkit-app-region: drag;
+}
+
+/* Windows main frame */
+#frameContentWin {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    -webkit-app-region: drag;
+}
+
+/* Darwin main frame */
+#frameContentDarwin {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    -webkit-app-region: drag;
+}
+
+/* Frame logo */
+#frameTitleDock {
+    padding: 2px 7px;
+}
+#frameTitleText {
+    font-size: 14px;
+    font-family: 'Equinox-Bold';
+    letter-spacing: 0.7px;
+}
+
+/* Windows frame button dock */
+#frameButtonDockWin {
+    -webkit-app-region: no-drag !important;
+    position: relative;
+    top: -2px;
+    right: -2px;
+    height: 22px;
+}
+#frameButtonDockWin > .frameButton:not(:first-child) {
+    margin-left: -4px;
+}
+
+/* Darwin frame button dock: NaN; */
+#frameButtonDockDarwin {
+    -webkit-app-region: no-drag !important;
+    position: relative;
+    top: -1px;
+    right: -1px;
+}
+
+/* Windows frame button styles */
+.frameButton {
+    background: none;
+    border: none;
+    height: 22px;
+    width: 39px;
+    cursor: pointer;
+}
+.frameButton:hover,
+.frameButton:focus {
+    background: rgba(189, 189, 189, 0.61);
+}
+.frameButton:active {
+    background: rgba(156, 156, 156, 0.43);
+}
+.frameButton:focus {
+    outline: 0px;
+}
+
+/* Close button is red */
+#frameButton_close:hover,
+#frameButton_close:focus {
+    background: rgba(255, 53, 53, 0.61) !important;
+}
+#frameButton_close:active {
+    background: rgba(235, 0, 0, 0.61) !important;
+}
+
+/* TODO: DARWIN BUTTONS */
