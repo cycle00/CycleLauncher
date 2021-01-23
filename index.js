@@ -19,8 +19,9 @@ function createWindow() {
     win = new BrowserWindow({
         width: 980,
         height: 550,
-        //icon: getPlatformIcon('Logo'),
+        icon: getPlatformIcon('MinecraftLogo'),
         frame: false,
+        title: 'Minecraft Launcher',
         // preloader shit
         webPreferences: {
             nodeIntegration: true,
@@ -31,7 +32,7 @@ function createWindow() {
         backgroundColor: '#171614'
     });
 
-    // TODO: background image selector with ejse
+    //ejse.data('bkid', Math.floor((Math.random() * fs.readFileSync(path.join(__dirname, 'app', 'assets', 'images', 'backgrounds')).length)));
 
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'app', 'app.ejs'),
