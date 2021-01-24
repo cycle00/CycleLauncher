@@ -54,7 +54,7 @@ p {
 
 /* Set default font and colour */
 body, button {
-    font-family: 'Equinox-Regular';
+    font-family: 'Product-Sans-Regular';
     color: white;
 }
 
@@ -254,16 +254,6 @@ body, button {
 
 #welcomeHeader {
     font-family: 'Product-Sans-Bold';
-    text-align: center;
-    color: white;
-    margin-bottom: 25px;
-    letter-spacing: 1px;
-    font-size: 20px;
-    text-shadow: white 0px 0px 0px;
-}
-
-#welcomeHeader {
-    font-family: 'Avenir Medium';
     text-align: center;
     color: white;
     margin-bottom: 25px;

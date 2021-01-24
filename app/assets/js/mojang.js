@@ -5,7 +5,7 @@
 */
 
 // Requirements
-const $ = require('jquery');
+const request = require('request');
 const logger = require('./logger')('%c[Mojang]', 'color: #c94a47; font-weight: bold');
 
 // Constants
@@ -67,4 +67,10 @@ exports.statusToHex = function(status) {
         default:
             return '#999999';
     }
+}
+
+exports.status = function() {
+    return new Promise((resolve, reject) => {
+        
+    });
 }
