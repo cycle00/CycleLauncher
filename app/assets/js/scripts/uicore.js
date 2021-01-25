@@ -1,7 +1,7 @@
 const $ = require('jquery');
 const { ipcRenderer, remote, shell, webFrame } = require('electron');
-const isDev = require('../isdev');
-const logger = require('../logger'); 
+const isDev = require('./assets/js/isdev');
+const logger = require('./assets/js/logger');
 
 const loggerUICore = logger('%c[UICore]', 'color: #000668; font-weight: bold');
 const loggerAutoUpdater = logger('%c[AutoUpdater]', 'color: #000668; font-weight: bold');
@@ -132,5 +132,24 @@ document.addEventListener('readystatechange', function () {
                 document.activeElement.blur();
             });
         });
+    } else if (document.readyState === 'complete') {
+        /*
+        document.getElementById('launch_details').style.maxWidth = 266.01;
+        document.getElementById('launch_progress').style.width = 170.8;
+        document.getElementById('launch_details_right').style.maxWidth = 170.8;
+        document.getElementById('launch_progress_label').style.width = 53.21;
+        */
     }
 }, false)
+
+$(document).on('click', 'a[href^="http"]', function(event) {
+    event.preventDefault();
+    shell.openExternal(this.href);
+});
+
+document.addEventListener('keydown', function (e) {
+    if ((e.key === 'I' || e.key === 'i') && e.ctrlKey && e.shiftKey) {
+        let window = remote.getCurrentWindow();
+        window.toggleDevTools();
+    }
+});

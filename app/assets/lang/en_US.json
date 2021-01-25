@@ -1,0 +1,13 @@
+{
+    "html": {
+        "avatarOverlay": "Edit"
+    },
+    "js": {
+        "login": {
+            "error": {
+
+            },
+            "login": "Login"
+        }
+    }
+}

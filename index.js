@@ -90,12 +90,13 @@ function createWindow() {
         icon: getPlatformIcon('MinecraftLogo'),
         frame: false,
         title: 'Minecraft Launcher',
-        // preloader shit
         webPreferences: {
+            preload: path.join(__dirname, 'app', 'assets', 'js', 'preloader.js'),
             nodeIntegration: true,
             contextIsolation: false,
             enableRemoteModule: true,
-            worldSafeExecuteJavaScript: true
+            worldSafeExecuteJavaScript: true,
+            devTools: true
         },
         backgroundColor: '#171614'
     });

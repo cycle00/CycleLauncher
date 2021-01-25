@@ -25,3 +25,36 @@ function switchView(current, next, currentFadeTime = 500, nextFadeTime = 500, on
 function getCurrentView() {
     return currentView;
 }
+
+function showMainUI() {
+    /*
+    if (!isDev) {
+        loggerAutoUpdater.log("Initializing...");
+        ipcRenderer.send('autoUpdateAction', 'initAutoUpdater');
+    }
+    */
+
+    setTimeout(() => {
+        document.getElementById('frameBar').style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        // TODO: Background;
+        $('#main').show();
+
+        // TODO: check login;
+
+        // TODO: Check first launch
+        currentView = VIEWS.welcome;
+        $(VIEWS.welcome).fadeIn(1000);
+    });
+}
+
+// BURH
+
+document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+        if (!rscShouldLoad) {
+            rscShouldLoad = false;
+            // if not fatal error
+            showMainUI();
+        }
+    }
+}, false);

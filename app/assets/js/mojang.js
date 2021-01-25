@@ -71,6 +71,136 @@ exports.statusToHex = function(status) {
 
 exports.status = function() {
     return new Promise((resolve, reject) => {
-        
+        request.get('https://status.mojang.com/check', {
+            json: true,
+            timeout: 2500
+        },
+        function (error, response, body) {
+            if (error || response.statusCode !== 200) {
+                logger.warn('Unable to retrieve Mojang status.');
+                logger.debug('Error while retrieving Mojang statuses:', error);
+                for (let i = 0; i < statuses.length; i++) {
+                    statuses[i].status = 'grey';
+                }
+                resolve(statuses);
+            } else {
+                for (let i = 0; i < body.length; i++) {
+                    const key = Object.keys(body[i])[0];
+                    inner:
+                    for (let j = 0; j < statuses.length; j++) {
+                        if (statuses[j].service === key) {
+                            statuses[j].status = body[i][key];
+                            break inner;
+                        }
+                    }
+                }
+                resolve(statuses);
+            }
+        });
+    });
+}
+
+exports.authenticate = function(username, password, clientToken, requestUser = true, agent = minecraftAgent) {
+    return new Promise((resolve, reject) => {
+        const body = {
+            agent,
+            username,
+            password,
+            requestUser
+        };
+
+        if (clientToken != null) {
+            body.clientToken = clientToken;
+        }
+
+        request.post(authpath + '/authenticate', {
+            json: true,
+            body: body
+        },
+        function (error, response, body) {
+            if (error) {
+                logger.error('Error during authentication.', error);
+                reject(error);
+            } else {
+                if (response.statusCode === 200) {
+                    resolve(body);
+                } else {
+                    reject(body || {code: 'ENOTFOUND'});
+                }
+            }
+        });
+    });
+}
+
+exports.validate = function(accessToken, clientToken) {
+    return new Promise((resolve, reject) => {
+        request.post(authpath + '/validate', {
+            json: true,
+            body: {
+                accessToken,
+                clientToken
+            }
+        },
+        function (error, response, body) {
+            if (error) {
+                logger.error('Error during validation.', error);
+                reject(error);
+            } else {
+                if (response.statusCode === 403) {
+                    resolve(false);
+                } else {
+                    resolve(true);
+                }
+            }
+        });
+    });
+}
+
+exports.invalidate = function(accessToken, clientToken) {
+    return new Promise((resolve, reject) => {
+        request.post(authpath + '/invalidate', {
+            json: true,
+            body: {
+                accessToken,
+                clientToken
+            }
+        },
+        function (error, response, body) {
+            if (error) {
+                logger.error('Error during invalidation.', error);
+                reject(error);
+            } else {
+                if (response.statusCode === 204) {
+                    resolve();
+                } else {
+                    reject(body);
+                }
+            }
+        });
+    });
+}
+
+exports.refresh = function(accessToken, clientToken, requestUser = true) {
+    return new Promise((resolve, reject) => {
+        request.post(authpath + '/refresh', {
+            json: true,
+            body: {
+                accessToken,
+                clientToken,
+                requestUser
+            }
+        },
+        function (error, response, body) {
+            if (error) {
+                logger.error('Error during refresh.', error);
+                reject(error);
+            } else {
+                if (response.statusCode === 200) {
+                    resolve(body);
+                } else {
+                    reject(body);
+                }
+            }
+        });
     });
 }
