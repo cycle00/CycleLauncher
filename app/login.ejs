@@ -1,3 +1,51 @@
 <div id="loginContainer" style="display: none;">
-    <!-- TODO: make a grey box that encapsulates the login -->
+    <div id="loginCancelContainer" style="display: none;">
+        <button id="loginCancelButton">
+            <div id="loginCancelIcon">X</div>
+            <span id="loginCancelText">Cancel</span>
+        </button>
+    </div>
+    <div id="loginContent"> <!-- box moment -->
+        <form id="loginForm">
+            <img id="loginImage" src="assets/images/MinecraftLogo.png" />
+            <span id="loginSubheader">Minecraft Login</span>
+            <div class="loginFieldContainer">
+                <span class="loginErrorSpan" id="loginEmailError">* Invalid Value</span>
+                <input id="loginUsername" class="loginField" type="text" placeholder="Username or Email" />
+            </div>
+            <div class="loginFieldContainer">
+                <span class="loginErrorSpan" id="loginPasswordError">* Required</span>
+                <input id="loginPassword" class="loginField" type="text" placeholder="Password" />
+            </div>
+            <div id="loginOptions">
+                <span class="loginSpanDim">
+                    <a href="https://my.minecraft.net/en-us/password/forgot/">forgot password?</a>
+                </span>
+                <label id="checkmarkContainer">
+                    <input id="loginRememberOption" type="checkbox" checked>
+                    <span id="loginRememberText" class="loginSpanDim">remember me?</span>
+                    <span class="loginCheckmark"></span>
+                </label>
+            </div>
+            <button id="loginButton" disabled>
+                <div id="loginButtonContents">
+                    LOGIN
+                    <svg id="loginSVG" viewBox="0 0 24.87 13.97">
+                        <defs>
+                            <style>.arrowLine{fill:none;stroke:#fff;stroke-width:2px;transition:0.25s ease;}</style>
+                        </defs>
+                        <polyline class="arrowLine" points="0.71 13.26 12.56 1.41 24.16 13.02" />
+                    </svg>
+                </div>
+            </button>
+            <div id="loginDisclaimer">
+                <span class="loginSpanDim" id="loginRegisterSpan">
+                    <a href="https://minecraft.net/en-us/store/minecraft/">need an account?</a>
+                </span>
+                <p class="loginDisclaimerText">Your password is sent directly to Mojang and is never stored.</p>
+                <p class="loginDisclaimerText">Cycle Launcher is not affiliated with Mojang AB.</p>
+            </div>
+        </form>
+    </div>
+    <script src="./assets/js/scripts/login.js"></script>
 </div>

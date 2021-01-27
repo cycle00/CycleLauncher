@@ -1,5 +1,9 @@
 const path = require('path');
 
+const AuthManager = require('./assets/js/authmanager');
+const ConfigManager = require('./assets/js/configmanager');
+const Lang = require('./assets/js/langloader');
+
 let rscShouldLoad = false;
 let fatalStartupError = false;
 
@@ -27,23 +31,35 @@ function getCurrentView() {
 }
 
 function showMainUI() {
-    /*
     if (!isDev) {
         loggerAutoUpdater.log("Initializing...");
-        ipcRenderer.send('autoUpdateAction', 'initAutoUpdater');
+        ipcRenderer.send('autoUpdateAction', 'initAutoUpdater', ConfigManager.getAllowPrerelease());
     }
-    */
+
+
 
     setTimeout(() => {
         document.getElementById('frameBar').style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
         // TODO: Background;
         $('#main').show();
 
-        // TODO: check login;
+        const isLoggedIn = Object.keys(ConfigManager.getAuthAccounts()).length > 0;
 
-        // TODO: Check first launch
-        currentView = VIEWS.welcome;
-        $(VIEWS.welcome).fadeIn(1000);
+        if (!isDev && isLoggedIn) {
+
+        }
+
+        if (ConfigManager.isFirstLaunch()) {
+            currentView = VIEWS.welcome;
+            $(VIEWS.welcome).fadeIn(1000);
+        } else {
+            if (isLoggedIn) {
+                // landing
+            } else {
+                currentView = VIEWS.login;
+                $(VIEWS.login).fadeIn(1000);
+            }
+        }
     });
 }
 
