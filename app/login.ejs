@@ -15,7 +15,7 @@
             </div>
             <div class="loginFieldContainer">
                 <span class="loginErrorSpan" id="loginPasswordError">* Required</span>
-                <input id="loginPassword" class="loginField" type="text" placeholder="Password" />
+                <input type="password" id="loginPassword" class="loginField" type="text" placeholder="Password" />
             </div>
             <div id="loginOptions">
                 <span class="loginSpanDim">
@@ -36,10 +36,14 @@
                         </defs>
                         <polyline class="arrowLine" points="0.71 13.26 12.56 1.41 24.16 13.02" />
                     </svg>
+                    <div class="circle-loader">
+                        <div class="checkmark draw"></div>
+                    </div>
                 </div>
             </button>
             <div id="loginDisclaimer">
                 <span class="loginSpanDim" id="loginRegisterSpan">
+                    <!-- Currently doesnt work because migrating accounts -->
                     <a href="https://minecraft.net/en-us/store/minecraft/">need an account?</a>
                 </span>
                 <p class="loginDisclaimerText">Your password is sent directly to Mojang and is never stored.</p>

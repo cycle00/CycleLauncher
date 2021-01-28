@@ -14,7 +14,6 @@
     "electron-builder": "^22.9.1"
   },
   "dependencies": {
-    "discord-rpc": "^3.1.4",
     "ejs": "^3.1.5",
     "ejs-electron": "^2.1.1",
     "electron-updater": "^4.3.5",
