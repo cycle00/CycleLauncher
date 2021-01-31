@@ -36,7 +36,7 @@ function showMainUI() {
         ipcRenderer.send('autoUpdateAction', 'initAutoUpdater', ConfigManager.getAllowPrerelease());
     }
 
-
+    // prepare settings
 
     setTimeout(() => {
         document.getElementById('frameBar').style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
@@ -46,7 +46,7 @@ function showMainUI() {
         const isLoggedIn = Object.keys(ConfigManager.getAuthAccounts()).length > 0;
 
         if (!isDev && isLoggedIn) {
-
+            // validate account
         }
 
         if (ConfigManager.isFirstLaunch()) {
@@ -54,7 +54,8 @@ function showMainUI() {
             $(VIEWS.welcome).fadeIn(1000);
         } else {
             if (isLoggedIn) {
-                // landing
+                currentView = VIEWS.landing;
+                $(VIEWS.landing).fadeIn(1000);
             } else {
                 currentView = VIEWS.login;
                 $(VIEWS.login).fadeIn(1000);
@@ -64,12 +65,17 @@ function showMainUI() {
 }
 
 // BURH
+async function validateSelectedAccount() {
+    const selectedAcc = ConfigManager.getSelectedAccount();
+    if (selectedAcc != null) {
+        // validate account
+    }
+}
 
 document.addEventListener('readystatechange', function() {
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
         if (!rscShouldLoad) {
             rscShouldLoad = false;
-            // if not fatal error
             showMainUI();
         }
     }
