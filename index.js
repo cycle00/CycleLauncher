@@ -74,10 +74,6 @@ ipcMain.on('autoUpdateAction', (event, arg, data) => {
     }
 });
 
-ipcMain.on('distributionIndexDone', (event, res) => {
-    event.sender.send('distributionIndexDone', res);
-});
-
 app.disableHardwareAcceleration();
 app.allowRendererProcessReuse = true;
 
@@ -95,13 +91,12 @@ function createWindow() {
             nodeIntegration: true,
             contextIsolation: false,
             enableRemoteModule: true,
-            worldSafeExecuteJavaScript: true,
-            devTools: true
+            worldSafeExecuteJavaScript: true
         },
         backgroundColor: '#171614'
     });
 
-    //ejse.data('bkid', Math.floor((Math.random() * fs.readFileSync(path.join(__dirname, 'app', 'assets', 'images', 'backgrounds')).length)));
+    ejse.data('bkid', Math.floor((Math.random() * fs.readdirSync(path.join(__dirname, 'app', 'assets', 'images', 'backgrounds')).length)));
 
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'app', 'app.ejs'),

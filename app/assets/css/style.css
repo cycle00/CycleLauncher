@@ -893,7 +893,7 @@ body, button {
 
 /* Overlay title styles. */
 #overlayTitle {
-    font-family: 'Avenir Medium';
+    font-family: 'Product-Sans-Bold';
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 1px;
@@ -921,7 +921,7 @@ body, button {
     background: none;
     border: 1px solid #ffffff;
     color: white;
-    font-family: 'Avenir Medium';
+    font-family: 'Product-Sans-Bold';
     font-weight: bold;
     border-radius: 2px;
     padding: 0px 8.1px;
@@ -969,7 +969,7 @@ body, button {
 }
 
 #accountSelectHeader {
-    font-family: 'Avenir Medium';
+    font-family: 'Product-Sans-Bold';
     font-size: 20px;
     font-weight: bold;
     color: #fff;

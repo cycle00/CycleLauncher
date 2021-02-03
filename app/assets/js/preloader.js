@@ -10,9 +10,6 @@ const logger = require('./logger')('%c[Preloader]', 'color: #a02d2a; font-weight
 logger.log('Loading...');
 
 ConfigManager.load();
-if (ConfigManager.isFirstLaunch) {
-    ConfigManager.save();
-}
 
 LangLoader.loadLanguage('en_US');
 
